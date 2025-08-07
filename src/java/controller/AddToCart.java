@@ -2,26 +2,14 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import hibernate.Cart;
-import hibernate.HibernateUtil;
-import hibernate.Product;
 import hibernate.User;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Validations;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import service.CartService;
 
 @WebServlet(name = "AddToCart", urlPatterns = {"/AddToCart"})
