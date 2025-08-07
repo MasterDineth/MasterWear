@@ -37,12 +37,6 @@ public class LoadSingleProduct extends HttpServlet {
 
                 Product product = (Product) s.get(Product.class, Integer.valueOf(productId));
 
-                System.out.println(product.getColor().getName());
-                System.out.println(product.getSize().getName());
-                System.out.println(product.getCategory().getId());
-                System.out.println(product.getCategory().getName());
-                System.out.println(product.getStatus().getName());
-
                 if (product.getStatus().getName().equals("Active")) {
 
                     Criteria c1 = s.createCriteria(Category.class);

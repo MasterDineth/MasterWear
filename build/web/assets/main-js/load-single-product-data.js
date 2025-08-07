@@ -119,6 +119,7 @@ async function addToCart(productId, qty) {
         const json = await response.json();
 
         if (json.status) {
+            console.log(json)
            alert("added to cart");
         } else {
            console.log("error")

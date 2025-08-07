@@ -17,6 +17,7 @@
     <mapping class="hibernate.Color"/>  
     <mapping class="hibernate.Status"/>  
     <mapping class="hibernate.Category"/>  
+    <mapping class="hibernate.Cart"/>  
     <!--<mapping class="hibernate."/>-->  
   </session-factory>
 </hibernate-configuration>
