@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>web/assets/main-js/loadUserData.js</url>
+            <bookmark id="1">
+                <name/>
+                <line>8</line>
+                <key/>
+            </bookmark>
+            <bookmark id="2">
+                <name/>
+                <line>24</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/MasterDineth/OneDrive%20-%20MSFT/Documents/Projects/New%20Project/MasterWear/web/shop-single.html</file>
+            <file>file:/C:/Users/MasterDineth/OneDrive%20-%20MSFT/Documents/Projects/New%20Project/MasterWear/web/assets/main-js/load-single-product-data.js</file>
+            <file>file:/C:/Users/MasterDineth/OneDrive%20-%20MSFT/Documents/Projects/New%20Project/MasterWear/src/java/hibernate/Category.java</file>
+            <file>file:/C:/Users/MasterDineth/OneDrive%20-%20MSFT/Documents/Projects/New%20Project/MasterWear/src/java/controller/LoadSingleProduct.java</file>
+            <file>file:/C:/Users/MasterDineth/OneDrive%20-%20MSFT/Documents/Projects/New%20Project/MasterWear/src/java/hibernate/Color.java</file>
+            <file>file:/C:/Users/MasterDineth/OneDrive%20-%20MSFT/Documents/Projects/New%20Project/MasterWear/src/java/hibernate/Product.java</file>
+            <file>file:/C:/Users/MasterDineth/OneDrive%20-%20MSFT/Documents/Projects/New%20Project/MasterWear/src/java/hibernate.cfg.xml</file>
+        </group>
+    </open-files>
+</project-private>
