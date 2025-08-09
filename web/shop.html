@@ -112,25 +112,25 @@
 
                             <div class="row">
                                 <div class="col-md-12 mb-5">
-                                    <div class="float-md-left mb-1"><h2 class="text-black h5">Shop All</h2> </div>
-
+                                    <div class="float-md-left mb-1"><h2 class="text-black h5 col-12">Shop All</h2></div>
+                                    
                                     <input class="form-control mb-3" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
 
                                     <datalist id="datalistOptions">
                                     </datalist>
 
                                     <div class="d-flex">
-                                        <div class="dropdown mr-1 ml-md-auto">
-                                            <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Latest
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                                <a class="dropdown-item" href="#">Men</a>
-                                                <a class="dropdown-item" href="#">Women</a>
-                                                <a class="dropdown-item" href="#">Children</a>
-                                            </div>
+                                        <p class="ms-2" >Displaying <span id="all-item-count" class="">1-6</span> products</p> 
+                                        
+                                        <div class="dropdown mr-1 ml-md-auto">                                            
+                                            <select class="btn btn-secondary btn-sm dropdown-toggle" id="st-sort">
+                                                <option>Sort by Latest</option>
+                                                <option>Sort by Oldest</option>
+                                                <option>Sort by Name</option>
+                                                <option>Sort by Price</option>
+                                            </select>
                                         </div>
-                                        <div class="btn-group">
+<!--                                        <div class="btn-group">
                                             <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
                                                 <a class="dropdown-item" href="#">Relevance</a>
@@ -140,7 +140,7 @@
                                                 <a class="dropdown-item" href="#">Price, low to high</a>
                                                 <a class="dropdown-item" href="#">Price, high to low</a>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +211,6 @@
                                     <h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
                                     <ul class="list-unstyled mb-0"  id="size-options">
                                         <li class="mb-1" id="size-li"><input type="checkbox" id="size-a" class="mr-2 mt-1"> <span class="text-black" id="size-b">Small (2,319)</span></li>
-
                                     </ul>
                                 </div>
                                 <!--Size List-->
@@ -226,8 +225,8 @@
                                 </div>
                                 <!--Color List-->   
                                 <div class="mb-4">
-                                    <p><a href="#" class="btn btn-secondary btn-sm col-12">Reset</a></p>
-                                    <p><a href="#" class="btn btn-primary btn-sm col-12">Search Now</a></p>
+                                    <p><a  class="btn btn-secondary btn-sm col-12" onclick="loadData();">Reset</a></p>
+                                    <p><a  class="btn btn-primary btn-sm col-12" onclick="searchProduct(0);">Search Now</a></p>
                                 </div>
 
                             </div>
