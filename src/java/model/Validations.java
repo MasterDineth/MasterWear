@@ -14,6 +14,10 @@ public class Validations {
         return string != null && string.isEmpty();
     }
 
+    public static boolean isDouble(String value) {
+        return value.matches("^\\d+(\\.\\d{2})?$");
+    }
+
     public boolean charLen(String input, int value) {
         return input.length() <= value;
     }
