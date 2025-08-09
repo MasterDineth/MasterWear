@@ -75,7 +75,7 @@ async function saveProduct() {
         } else {
 
             if (json.message === "please sign in!") {
-                window.location = "auth-login-basic.html";
+                window.location = "/MasterWear/html/auth-login-basic.html";
             } else {
                 console.log(json.message);
             }
