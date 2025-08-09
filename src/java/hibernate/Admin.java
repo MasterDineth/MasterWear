@@ -37,6 +37,15 @@ public class Admin implements Serializable {
     @Column(name = "zip", length = 45, nullable = false)
     private String zip;
 
+    @Column(name = "mobile", length = 45, nullable = false)
+    private String mobile;
+    
+    @Column(name = "first_name", length = 45, nullable = false)
+    private String firstName;
+    
+    @Column(name = "last_name", length = 45, nullable = false)
+    private String lastName;
+
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
@@ -100,6 +109,30 @@ public class Admin implements Serializable {
         this.zip = zip;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public City getCity() {
         return city;
     }
@@ -107,7 +140,5 @@ public class Admin implements Serializable {
     public void setCity(City city) {
         this.city = city;
     }
-
-    
 
 }
