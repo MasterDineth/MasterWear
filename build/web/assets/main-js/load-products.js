@@ -6,7 +6,7 @@ async function loadData() {
         const json = await response.json();
         if (json.status) {
 
-            console.log(json);
+//            console.log(json);
             loadOptions("category", json.categorydList, "name");
             loadOptions("size", json.sizeList, "name");
             loadOptions("color", json.colorList, "name");
@@ -31,18 +31,17 @@ function loadOptions(prefix, dataList, property) {
 
         if (prefix === "color") {
 
-//            li_clone.querySelector("#" + prefix + "-c").style.borderColor = "black";
             li_clone.querySelector("#" + prefix + "-c").style.backgroundColor = item[property];
-            
+
             li_clone.querySelector("#" + prefix + "-a").value = item[property];
             li_clone.querySelector("#" + prefix + "-b").innerHTML = item[property];
         } else {
+
             li_clone.querySelector("#" + prefix + "-a").value = item[property];
             li_clone.querySelector("#" + prefix + "-b").innerHTML = item[property];
-
-
         }
         options.appendChild(li_clone);
+
     });
 
     const all_li = document.querySelectorAll("#" + prefix + "-options li");
@@ -56,59 +55,83 @@ function loadOptions(prefix, dataList, property) {
     });
 }
 
-async function searchProduct(firstResult) {
-    
-    alert("search");
 
-//    const brand_name = document.getElementById("brand-options")
-//            .querySelector(".chosen")?.querySelector("a").innerHTML;
+
+
+
+async function searchProduct(firstResult) {
 //
-//    const condition_name = document.getElementById("condition-options")
-//            .querySelector(".chosen")?.querySelector("a").innerHTML;
+//    let category = "";
+//    let size = "";
+//    let color = "";
+
+//    const sizeCheckBox = document.querySelector("#size-options input[type='checkbox']:checked");
+//    let size = sizeCheckBox.value;
 //
-//    const color_name = document.getElementById("color-options")
-//            .querySelector(".chosen")?.querySelector("a").style.backgroundColor;
+//    const categoryCheckBox = document.querySelector("#category-options input[type='checkbox']:checked");
+//    let category = categoryCheckBox.value;
 //
-//    const storage_value = document.getElementById("storage-options")
-//            .querySelector(".chosen")?.querySelector("a").innerHTML;
-//
-//    const price_range_start = $("#slider-range").slider("values", 0);
-//    const price_range_end = $("#slider-range").slider("values", 1);
-//
-//    const sort_value = document.getElementById("st-sort").value;
-//
-//    const data = {
-//        firstResult: firstResult,
-//        brandName: brand_name,
-//        conditionName: condition_name,
-//        colorName: color_name,
-//        storageValue: storage_value,
-//        priceStart: price_range_start,
-//        priceEnd: price_range_end,
-//        sortValue: sort_value
-//    };
-//
-//    const dataJSON = JSON.stringify(data);
-//    const response = await fetch("SearchProducts", {
-//        method: "POST",
-//        headers: {
-//            "Content-Type": "application/json"
-//        },
-//        body: dataJSON
-//    });
-//
-//    if (response.ok) {
-//        const json = await response.json();
-//        if (json.status) {
-//            console.log(json);
-//            updateProductView(json);
-//            console.log("Product loading Complete...");
-//        } else {
-//            console.log("Something went wrong.Please try again later");
-//        }
-//    } else {
-//        console.log("Something went wrong.Please try again later");
-//    }
+//    const colorCheckBox = document.querySelector("#color-options input[type='checkbox']:checked");
+//    let color = colorCheckBox.value;
+
+    const sizeCheckBox = document.querySelector("#size-options input[type='checkbox']:checked");
+    let size = sizeCheckBox ? sizeCheckBox.value : "";
+
+    const categoryCheckBox = document.querySelector("#category-options input[type='checkbox']:checked");
+    let category = categoryCheckBox ? categoryCheckBox.value : "";
+
+    const colorCheckBox = document.querySelector("#color-options input[type='checkbox']:checked");
+    let color = colorCheckBox ? colorCheckBox.value : "";
+
+
+
+
+
+    const price_range_start = $("#slider-range").slider("values", 0);
+    const price_range_end = $("#slider-range").slider("values", 1);
+    const sort_value = document.getElementById("st-sort").value;
+
+//        console.log(category);
+//    console.log(size);
+//    console.log(color);
+//    console.log(price_range_end);
+//    console.log(price_range_start);
+//    console.log(sort_value);
+
+    const data = {
+        firstResult: firstResult,
+        categoryName: category,
+        sizeName: size,
+        colorName: color,
+
+        priceStart: price_range_start,
+        priceEnd: price_range_end,
+        sortValue: sort_value
+    };
+
+    const dataJSON = JSON.stringify(data);
+
+//    console.log(dataJSON);
+    const response = await fetch("/MasterWear/SearchProductsByFilter", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: dataJSON
+    });
+
+    if (response.ok) {
+        const json = await response.json();
+        if (json.status) {
+            console.log(json);
+            updateProductView(json);
+            console.log("Product loading Complete...");
+        } else {
+            console.log("Something went wrong.Please try again later");
+        }
+    } else {
+        console.log("Something went wrong.Please try again later");
+    }
 }
 
 const st_product = document.getElementById("st-product"); //product card parent node
@@ -142,7 +165,8 @@ function updateProductView(json) {
     let st_pagination_container = document.getElementById("st-pagination-container");
     st_pagination_container.innerHTML = "";
     let all_product_count = json.allProductCount;
-//    document.getElementById("all-item-count").innerHTML = all_product_count;
+
+    document.getElementById("all-item-count").innerHTML = all_product_count;
 
     let product_per_page = 6;
     let pages = Math.ceil(all_product_count / product_per_page);
@@ -181,16 +205,16 @@ function updateProductView(json) {
     }
 
     //Next-button
-    if (current_page !== (pages - 1)) {
-        let st_pagination_button_next_colone = st_pagination_button_colone(true);
-        st_pagination_button_next_colone.innerHTML = "Next";
-        st_pagination_button_next_colone.addEventListener(
-                "click", (e) => {
-            current_page++;
-            searchProduct(current_page * product_per_page);
-        });
-        st_pagination_container.appendChild(st_pagination_button_next_colone);
-    }
+//    if (current_page !== (pages - 1)) {
+//        let st_pagination_button_next_colone = st_pagination_button_colone(true);
+//        st_pagination_button_next_colone.innerHTML = "Next";
+//        st_pagination_button_next_colone.addEventListener(
+//                "click", (e) => {
+//            current_page++;
+//            searchProduct(current_page * product_per_page);
+//        });
+//        st_pagination_container.appendChild(st_pagination_button_next_colone);
+//    }
 }
 
 function addToCart(productId, qty) {
