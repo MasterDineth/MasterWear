@@ -26,9 +26,9 @@ function loadSelect(selectId, list, property) {
 }
 
 async function saveProduct() {
-    
+
     console.log("saving product");
-    
+
     const categoryId = document.getElementById("category").value;
     const sizeId = document.getElementById("size").value;
     const colorId = document.getElementById("color").value;
@@ -39,7 +39,7 @@ async function saveProduct() {
     const qty = document.getElementById("quantity").value;
 
     const image = document.getElementById("image").files[0];
-    
+
     console.log(price);
 
 
@@ -61,7 +61,7 @@ async function saveProduct() {
 
     if (response.ok) {
         const json = await response.json();
-        if (json.status) {           
+        if (json.status) {
 
             document.getElementById("category").value = 0;
             document.getElementById("size").value = 0;
@@ -72,12 +72,23 @@ async function saveProduct() {
             document.getElementById("quantity").value = 1;
             document.getElementById("image").value = "";
 
+            Swal.fire({
+                title: "Success!",
+                text: json.message,
+                icon: "success"
+            });
+
         } else {
 
             if (json.message === "please sign in!") {
                 window.location = "/MasterWear/html/auth-login-basic.html";
             } else {
-                console.log(json.message);
+                Swal.fire({
+                    title: "Failed To Save Product!",
+                    text: json.message,
+                    icon: "error"
+                });
+//                console.log(json.message);
             }
 
         }

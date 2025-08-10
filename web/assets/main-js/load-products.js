@@ -204,17 +204,17 @@ function updateProductView(json) {
         st_pagination_container.appendChild(st_pagination_button_colone);
     }
 
-    //Next-button
-//    if (current_page !== (pages - 1)) {
-//        let st_pagination_button_next_colone = st_pagination_button_colone(true);
-//        st_pagination_button_next_colone.innerHTML = "Next";
-//        st_pagination_button_next_colone.addEventListener(
-//                "click", (e) => {
-//            current_page++;
-//            searchProduct(current_page * product_per_page);
-//        });
-//        st_pagination_container.appendChild(st_pagination_button_next_colone);
-//    }
+//    Next-button
+    if (current_page !== (pages - 1)) {
+        let st_pagination_button_next_colone = st_pagination_button_colone(true);
+        st_pagination_button_next_colone.innerHTML = "Next";
+        st_pagination_button_next_colone.addEventListener(
+                "click", (e) => {
+            current_page++;
+            searchProduct(current_page * product_per_page);
+        });
+        st_pagination_container.appendChild(st_pagination_button_next_colone);
+    }
 }
 
 function addToCart(productId, qty) {

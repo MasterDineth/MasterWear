@@ -33,7 +33,7 @@ import org.hibernate.criterion.Restrictions;
 @WebServlet(name = "SaveProductData", urlPatterns = {"/SaveProductData"})
 public class SaveProductData extends HttpServlet {
 
-    private final static int PENTING_STATUS_ID = 2;
+    private final static int PENTING_STATUS_ID = 1;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -136,7 +136,7 @@ public class SaveProductData extends HttpServlet {
 
                         productFolder.mkdir();
 
-                        File file1 = new File(productFolder, "image1.jpg");
+                        File file1 = new File(productFolder, "image1.png");
                         Files.copy(part1.getInputStream(), file1.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         //image-uploading
 
