@@ -60,19 +60,6 @@ function loadOptions(prefix, dataList, property) {
 
 
 async function searchProduct(firstResult) {
-//
-//    let category = "";
-//    let size = "";
-//    let color = "";
-
-//    const sizeCheckBox = document.querySelector("#size-options input[type='checkbox']:checked");
-//    let size = sizeCheckBox.value;
-//
-//    const categoryCheckBox = document.querySelector("#category-options input[type='checkbox']:checked");
-//    let category = categoryCheckBox.value;
-//
-//    const colorCheckBox = document.querySelector("#color-options input[type='checkbox']:checked");
-//    let color = colorCheckBox.value;
 
     const sizeCheckBox = document.querySelector("#size-options input[type='checkbox']:checked");
     let size = sizeCheckBox ? sizeCheckBox.value : "";
@@ -83,20 +70,9 @@ async function searchProduct(firstResult) {
     const colorCheckBox = document.querySelector("#color-options input[type='checkbox']:checked");
     let color = colorCheckBox ? colorCheckBox.value : "";
 
-
-
-
-
     const price_range_start = $("#slider-range").slider("values", 0);
     const price_range_end = $("#slider-range").slider("values", 1);
     const sort_value = document.getElementById("st-sort").value;
-
-//        console.log(category);
-//    console.log(size);
-//    console.log(color);
-//    console.log(price_range_end);
-//    console.log(price_range_start);
-//    console.log(sort_value);
 
     const data = {
         firstResult: firstResult,
@@ -146,14 +122,6 @@ function updateProductView(json) {
         st_product_clone.querySelector("#st-product-a-1").href = "/MasterWear/shop-single.html?id=" + product.id;
         st_product_clone.querySelector("#st-product-img-1").src = "images\\product\\" + product.id + "\\image1.png";
 
-//        st_product_clone.querySelector("#st-product-add-to-cart").addEventListener(
-//                "click", (e) => {
-//            addToCart(product.id, 1);
-//            e.preventDefault();
-//        });
-
-//        st_product_clone.querySelector("#st-product-a-2").href = "single-product.html?id=" + product.id;
-
         st_product_clone.querySelector("#st-product-title-1").innerHTML = product.title;
         st_product_clone.querySelector("#st-product-price-1").innerHTML = "Rs : " + new Intl.NumberFormat(
                 "en-US",
@@ -171,52 +139,71 @@ function updateProductView(json) {
     let product_per_page = 6;
     let pages = Math.ceil(all_product_count / product_per_page);
 
-    //previos-button
-    if (current_page !== 0) {
-        let st_pagination_button_per_colone = st_pagination_button_colone(true);
-        st_pagination_button_per_colone.innerHTML = "Prev";
+    renderPagination();
+}
 
-        st_pagination_button_per_colone.addEventListener(
-                "click", (e) => {
-            current_page--;
-            searchProduct(current_page * product_per_page);
-        });
-        st_pagination_container.appendChild(st_pagination_button_per_colone);
-    }
+let pages = 2; 
+let currentPage = 1;
 
-//pagination-button
-    for (let i = 0; i < pages; i++) {
-        let st_pagination_button_colone = st_pagination_button.cloneNode(true);
-        st_pagination_button_colone.innerHTML = i + 1;
-        st_pagination_button_colone.addEventListener(
-                "click", (e) => {
-            current_page = i;
-            searchProduct(i * product_per_page);
-            e.prevenDefault();
-        });
+// Create pagination UI dynamically
+function renderPagination() {
 
-        if (i === Number(current_page)) {
-            st_pagination_button_colone.className = "axil-btn btn-bg-primary ml--10";
+    const container = document.getElementById("st-pagination-container");
+    const ul = document.createElement("ul");
+    ul.innerHTML = "";
+
+    // Previous button
+    const prevLi = document.createElement("li");
+    prevLi.innerHTML = `<a href="#">&lt;</a>`;
+    if (currentPage === 1)
+        prevLi.classList.add("disabled");
+    ul.appendChild(prevLi);
+
+    // Page number buttons
+    for (let i = 1; i <= pages; i++) {
+        const li = document.createElement("li");
+        if (i === currentPage) {
+            li.classList.add("active");
+            li.innerHTML = `<span>${i}</span>`;
         } else {
-            st_pagination_button_colone.className = "axil-btn btn-bg-secondary ml--10";
-
+            li.innerHTML = `<a href="#">${i}</a>`;
         }
-        st_pagination_container.appendChild(st_pagination_button_colone);
+        ul.appendChild(li);
     }
 
-//    Next-button
-    if (current_page !== (pages - 1)) {
-        let st_pagination_button_next_colone = st_pagination_button_colone(true);
-        st_pagination_button_next_colone.innerHTML = "Next";
-        st_pagination_button_next_colone.addEventListener(
-                "click", (e) => {
-            current_page++;
-            searchProduct(current_page * product_per_page);
-        });
-        st_pagination_container.appendChild(st_pagination_button_next_colone);
-    }
+    // Next button
+    const nextLi = document.createElement("li");
+    nextLi.innerHTML = `<a href="#">&gt;</a>`;
+    if (currentPage === pages)
+        nextLi.classList.add("disabled");
+    ul.appendChild(nextLi);
+
+    // Replace old pagination
+    container.innerHTML = "";
+    container.appendChild(ul);
+
+    // Attach click listeners
+    ul.addEventListener("click", function (e) {
+        const target = e.target;
+        if (target.tagName !== "A" && target.tagName !== "SPAN")
+            return;
+
+        const text = target.textContent.trim();
+
+        if (text === "<" && currentPage > 1) {
+            currentPage--;
+        } else if (text === ">" && currentPage < pages) {
+            currentPage++;
+        } else {
+            const pageNum = parseInt(text);
+            if (!isNaN(pageNum))
+                currentPage = pageNum;
+        }
+
+        renderPagination();
+        searchProduct((currentPage - 1) * 6);
+    });
 }
 
-function addToCart(productId, qty) {
-    console.log(productId + " " + qty);
-}
+// Call this whenever `pages` changes or on page load
+

@@ -37,14 +37,14 @@
 
                             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
                                 <div class="site-logo">
-                                    <a href="index.html" class="js-logo-clone">Shoppers</a>
+                                    <a href="index.html" class="js-logo-clone">Master Wear</a>
                                 </div>
                             </div>
 
                             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                                 <div class="site-top-icons">
                                     <ul>
-                                        <li><a href="#"><span class="icon icon-person"></span></a></li>
+                                        <li><a href="profile-settings.html"><span class="icon icon-person"></span></a></li>
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                         <li>
                                             <a href="cart.html" class="site-cart">
@@ -63,31 +63,31 @@
                 <nav class="site-navigation text-right text-md-center" role="navigation">
                     <div class="container">
                         <ul class="site-menu js-clone-nav d-none d-md-block">
-                            <li class="has-children">
+                            <li class="has-children active">
                                 <a href="index.html">Home</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Menu One</a></li>
-                                    <li><a href="#">Menu Two</a></li>
-                                    <li><a href="#">Menu Three</a></li>
-                                    <li class="has-children">
-                                        <a href="#">Sub Menu</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Menu One</a></li>
-                                            <li><a href="#">Menu Two</a></li>
-                                            <li><a href="#">Menu Three</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <!--              <ul class="dropdown">
+                                                <li><a href="#">Menu One</a></li>
+                                                <li><a href="#">Menu Two</a></li>
+                                                <li><a href="#">Menu Three</a></li>
+                                                <li class="has-children">
+                                                  <a href="#">Sub Menu</a>
+                                                  <ul class="dropdown">
+                                                    <li><a href="#">Menu One</a></li>
+                                                    <li><a href="#">Menu Two</a></li>
+                                                    <li><a href="#">Menu Three</a></li>
+                                                  </ul>
+                                                </li>
+                                              </ul>-->
                             </li>
                             <li class="has-children">
                                 <a href="about.html">About</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Menu One</a></li>
-                                    <li><a href="#">Menu Two</a></li>
-                                    <li><a href="#">Menu Three</a></li>
-                                </ul>
+                                <!--              <ul class="dropdown">
+                                                <li><a href="#">Menu One</a></li>
+                                                <li><a href="#">Menu Two</a></li>
+                                                <li><a href="#">Menu Three</a></li>
+                                              </ul>-->
                             </li>
-                            <li class="active"><a href="shop.html">Shop</a></li>
+                            <li><a href="shop.html">Shop</a></li>
                             <li><a href="#">Catalogue</a></li>
                             <li><a href="#">New Arrivals</a></li>
                             <li><a href="contact.html">Contact</a></li>
@@ -113,7 +113,7 @@
                             <div class="row">
                                 <div class="col-md-12 mb-5">
                                     <div class="float-md-left mb-1"><h2 class="text-black h5 col-12">Shop All</h2></div>
-                                    
+
                                     <input class="form-control mb-3" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
 
                                     <datalist id="datalistOptions">
@@ -121,7 +121,7 @@
 
                                     <div class="d-flex">
                                         <p class="ms-2" >Displaying <span id="all-item-count" class="">1-6</span> products</p> 
-                                        
+
                                         <div class="dropdown mr-1 ml-md-auto">                                            
                                             <select class="btn btn-secondary btn-sm dropdown-toggle" id="st-sort">
                                                 <option>Sort by Latest</option>
@@ -130,17 +130,17 @@
                                                 <option>Sort by Price</option>
                                             </select>
                                         </div>
-<!--                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                                                <a class="dropdown-item" href="#">Relevance</a>
-                                                <a class="dropdown-item" href="#">Name, A to Z</a>
-                                                <a class="dropdown-item" href="#">Name, Z to A</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Price, low to high</a>
-                                                <a class="dropdown-item" href="#">Price, high to low</a>
-                                            </div>
-                                        </div>-->
+                                        <!--                                        <div class="btn-group">
+                                                                                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
+                                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                                                                        <a class="dropdown-item" href="#">Relevance</a>
+                                                                                        <a class="dropdown-item" href="#">Name, A to Z</a>
+                                                                                        <a class="dropdown-item" href="#">Name, Z to A</a>
+                                                                                        <div class="dropdown-divider"></div>
+                                                                                        <a class="dropdown-item" href="#">Price, low to high</a>
+                                                                                        <a class="dropdown-item" href="#">Price, high to low</a>
+                                                                                    </div>
+                                                                                </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -166,23 +166,40 @@
 
                                 <!--roduct card listing end-->
                             </div>
+
+                            <!--pagination-->
                             <div class="row" data-aos="fade-up">
                                 <div class="col-md-12 text-center">
                                     <div class="site-block-27" id="st-pagination-container">
-                                        <!--                                        <ul>
-                                                                                    <li><a href="#">&lt;</a></li>
-                                                                                    <li class="active"><span>1</span></li>
-                                                                                    <li><a href="#">2</a></li>
-                                                                                    <li><a href="#">3</a></li>
-                                                                                    <li><a href="#">4</a></li>
-                                                                                    <li><a href="#">5</a></li>
-                                                                                    <li><a href="#" id="st-pagination-button">&gt;</a></li>
-                                                                                </ul>-->
-                                        <a href="#" class="btn btn-primary " id="st-pagination-button">Prev</a>
-                                        <a href="#" class="btn btn-primary active" id="st-pagination-button">Next</a>
+                                        <ul>
+                                            <li><a href="#">&lt;</a></li>
+                                            <li class="active"><span>1</span></li>
+                                            <li><a href="#">2</a></li>                                           
+                                            <li><a href="#">&gt;</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
+                            <!--pagination-->
+
+
+
+                            <!--                            <div class="row" data-aos="fade-up">
+                                                            <div class="col-md-12 text-center">
+                                                                <div class="site-block-27" id="st-pagination-container">
+                                                                    <a href="#" class="btn btn-primary " id="st-pagination-button">Prev</a>
+                                                                    <a href="#" class="btn btn-primary active" id="st-pagination-button">Next</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+
+                            <!--                            <div class="row" data-aos="fade-up">
+                                                            <div class="col-md-12 text-center">
+                                                                <div class="site-block-27" id="st-pagination-container">
+                                                                     Buttons will be injected by JS 
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                         </div>
 
                         <div class="col-md-3 order-1 mb-5 mb-md-0">
