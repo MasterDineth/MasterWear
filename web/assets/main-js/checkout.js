@@ -1,8 +1,13 @@
 payhere.onCompleted = function onCompleted(orderId) {
-    const popup = new Notification();
-    popup.success({
-        message: "Payment completed. OrderID:" + orderId
+
+    Swal.fire({
+        title: "Payment Success",
+        text: "Payment completed. OrderID:" + orderId,
+        icon: "success"
     });
+    
+    window.location.href = "/MasterWear/html/thankyou.html";
+
 };
 
 // Payment window closed
@@ -157,7 +162,7 @@ async function loadCheckoutData() {
 
 
 async function checkout() {
-    
+
     let checkbox1 = document.getElementById("checkbox1").checked;
 
     let first_name = document.getElementById("firstName");
@@ -188,14 +193,14 @@ async function checkout() {
         },
         body: dataJSON
     });
-   
+
     if (response.ok) {
         const json = await response.json();
         if (json.status) {
             console.log(json);
             // PayHere Process
             payhere.startPayment(json.payhereJson);
-            
+
             alert("payment success");
         } else {
             console.log(json.message);

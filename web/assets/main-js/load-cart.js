@@ -56,7 +56,13 @@ async function loadCartItems() {
             document.getElementById("cartTotal").innerHTML ="Rs : "+new Intl.NumberFormat("en-US",
                     {minimumFractionDigits: 2}).format(total);
         } else {
-            alert(json.message);
+            
+            Swal.fire({
+                        title: "Cart!",
+                        text: json.message,
+                        icon: "info"
+                    });            
+          
         }
         console.log(json);
     } else {
