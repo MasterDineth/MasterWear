@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import hibernate.Category;
 import hibernate.City;
 
 import hibernate.HibernateUtil;
@@ -18,12 +19,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
-@WebServlet(name = "LoadProductTitles", urlPatterns = {"/LoadProductTitles"})
-public class LoadProductTitles extends HttpServlet {
+@WebServlet(name = "SearchProcess", urlPatterns = {"/SearchProcess"})
+public class SearchProcess extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -32,16 +35,22 @@ public class LoadProductTitles extends HttpServlet {
         Gson gson = new Gson();
         JsonObject responseObject = new JsonObject();
 
+        JsonObject requestJsonObject = gson.fromJson(request.getReader(), JsonObject.class);
         responseObject.addProperty("status", false);
 
         Criteria c1 = s.createCriteria(Product.class);
-        List<Product> productList = c1.list();
-
+        
+        String searchText = requestJsonObject.get("searchText").getAsString();
+        
+        if (!requestJsonObject.get("searchText").getAsString().isEmpty()) {            
+            c1.add(Restrictions.like("title", searchText, MatchMode.ANYWHERE));
+            System.out.println("Searched by Title");
+        }
 
         responseObject.addProperty("status", true);
+        List<Product> productList = c1.list();
 
         responseObject.add("productList", gson.toJsonTree(productList));
-        
         System.out.println("product title data loaded and sent");
 
         response.setContentType("application/json");

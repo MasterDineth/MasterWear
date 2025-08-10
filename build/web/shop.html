@@ -114,7 +114,7 @@
                                 <div class="col-md-12 mb-5">
                                     <div class="float-md-left mb-1"><h2 class="text-black h5 col-12">Shop All</h2></div>
 
-                                    <input class="form-control mb-3" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                    <input onkeyup="search();" class="form-control mb-3" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
 
                                     <datalist id="datalistOptions">
                                     </datalist>
@@ -385,8 +385,13 @@
         <script src="js/aos.js"></script>
 
         <script src="js/main.js"></script>
+        <script src="assets/main-js/search.js" defer></script>
+        <script src="assets/main-js/search-by-title.js" defer></script>
         <script src="assets/main-js/load-products.js"></script>
-        <script src="assets/main-js/search.js"></script>
+        <!--        <script src ="assets/main-js/search.js"></script>-->
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--<script src="assets/main-js/search-by-title.js"></script>-->
 
     </body>
 </html>

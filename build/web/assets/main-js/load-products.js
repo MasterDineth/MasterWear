@@ -205,5 +205,5 @@ function renderPagination() {
     });
 }
 
-// Call this whenever `pages` changes or on page load
+
 

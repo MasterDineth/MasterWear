@@ -24,3 +24,4 @@ async function loadSearchData() {
         document.getElementById("message").innerHTML = "Failed to Load Data! Please Try Again later!";
     }
 }
+
